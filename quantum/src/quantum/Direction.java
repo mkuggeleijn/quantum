@@ -5,10 +5,10 @@ import java.awt.Point;
 public enum Direction {
 	N, NE, E, SE, S, SW, W;
 	
-	public Point toOffset(Direction d){
+	public Point toOffset(){
 		int x = 0;
 		int y = 0;
-		switch (d){
+		switch (this){
 		case N:
 			y = -1;
 			break;

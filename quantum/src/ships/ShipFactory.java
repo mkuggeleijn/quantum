@@ -35,7 +35,7 @@ public class ShipFactory {
 	
 	public static void rerollShip(Ship oldShip){
 		Ship newShip = rollShip(oldShip.getOwner());
-		while (newShip == oldShip){
+		while (newShip.getClass() == oldShip.getClass()){
 			newShip = rollShip(oldShip.getOwner());
 		}
 		oldShip = newShip;

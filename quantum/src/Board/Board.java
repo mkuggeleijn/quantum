@@ -1,4 +1,4 @@
-package quantum;
+package Board;
 
 public class Board {
 

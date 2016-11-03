@@ -1,9 +1,9 @@
 package ships;
 
-import quantum.BoardObject;
+import quantum.GamePiece;
 import quantum.Player;
 
-public abstract class Ship extends BoardObject{
+public abstract class Ship extends GamePiece{
 	private String name;
 	private Player owner;
 	private int ID;
@@ -24,25 +24,6 @@ public abstract class Ship extends BoardObject{
 	}
 	
 	public abstract boolean doSpecial();
-
-	@Override
-	public boolean equals(Object o){
-		if (!(o instanceof Ship) || o == null){
-			return false;
-		}
-		Ship s = (Ship) o;
-		if (this.getClass() != s.getClass()){
-			return false;
-		}	
-		if (this.name != s.getName()
-				|| this.attack != s.getAttack()
-				|| this.defense != s.getDefense()
-				|| this.move != s.getMove()
-				|| this.owner != s.getOwner()){
-			return false;
-		}
-		return true;
-	}
 	
 	public Player getOwner() {
 		return owner;
