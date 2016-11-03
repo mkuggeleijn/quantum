@@ -1,6 +1,6 @@
 package actions;
 
-import Board.GameBoard;
+import board.GameBoard;
 
 public class Reconfigure extends GameAction{
 

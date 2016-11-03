@@ -2,6 +2,8 @@ package quantum;
 
 import java.awt.Point;
 
+
+
 public class GameSettings {
 
 	private static int tileSize;

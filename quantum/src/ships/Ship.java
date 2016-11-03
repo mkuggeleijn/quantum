@@ -1,5 +1,6 @@
 package ships;
 
+import board.Square;
 import quantum.GamePiece;
 import quantum.Player;
 
@@ -24,6 +25,17 @@ public abstract class Ship extends GamePiece{
 	}
 	
 	public abstract boolean doSpecial();
+	
+	public void moveTo(Square square){
+		this.getSquare().setPiece(null);
+		this.setSquare(square);
+	}
+	
+	public void destroy(){
+		this.getSquare().setPiece(null);
+		this.setSquare(null); // Might change this 
+		this.getOwner().shipDestroyed(this);
+	}
 	
 	public Player getOwner() {
 		return owner;

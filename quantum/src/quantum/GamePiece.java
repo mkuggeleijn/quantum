@@ -1,6 +1,6 @@
 package quantum;
 
-import Board.Square;
+import board.Square;
 
 public abstract class GamePiece {
 

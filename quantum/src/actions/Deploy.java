@@ -1,7 +1,7 @@
 package actions;
 
-import Board.GameBoard;
-import Board.Square;
+import board.GameBoard;
+import board.Square;
 import quantum.Planet;
 import quantum.Player;
 import ships.Ship;

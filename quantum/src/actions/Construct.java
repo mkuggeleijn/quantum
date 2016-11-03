@@ -1,6 +1,6 @@
 package actions;
 
-import Board.GameBoard;
+import board.GameBoard;
 import quantum.Cube;
 import quantum.Planet;
 import quantum.Player;
