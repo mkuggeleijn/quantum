@@ -3,6 +3,7 @@ package quantum;
 import java.util.Vector;
 
 import ships.Ship;
+import ships.ShipFactory;
 
 public class Player {
 
@@ -10,16 +11,19 @@ public class Player {
 	
 	private int dominance;
 	private int research;
-	private Vector<Ship> scrapyard;
 	private Vector<Ship> ships;
+	private Vector<Ship> expansion;
+	private Vector<Ship> scrapyard;
+	
 	private Vector<Cube> cubes;
 	
 	public Player(String faction){
-		this.faction = faction;
+		this.setFaction(faction);
 		this.dominance = 0;
 		this.research = 0;
 		this.scrapyard = new Vector<Ship>(GameSettings.getMaxShips());
 		this.ships = new Vector<Ship>(GameSettings.getMaxShips());
+		this.setExpansion(new Vector<Ship>(GameSettings.getMaxExpansion())); 
 		resetCubes();
 	}
 	
@@ -30,9 +34,31 @@ public class Player {
 		}
 	}
 	
+	
+	public void addCube(Cube cube){
+		if (cubes.size() != cubes.capacity()){
+			cubes.add(cube);
+		}
+	}
+	public void addCube(){
+		addCube(new Cube(this));
+	}
+	
+	public Cube removeCube(){
+		Cube cube = cubes.lastElement();
+		cubes.remove(cube);
+		return cube;
+	}
+	
+	public void deployShip(Ship ship){
+		scrapyard.remove(ship);
+		ships.add(ship);
+	}
+	
 	public void shipDestroyed(Ship ship){
 		ships.remove(ship);
-		ships.add(ship);
+		ShipFactory.rerollShip(ship);  // potential memory leak?
+		scrapyard.add(ship);
 	}
 
 	public int getDominance() {
@@ -70,6 +96,26 @@ public class Player {
 		if (this.research > 0){
 			this.research--;
 		}
+	}
+
+	public Vector<Ship> getExpansion() {
+		return expansion;
+	}
+
+	public void setExpansion(Vector<Ship> expansion) {
+		this.expansion = expansion;
+	}
+
+	public String getFaction() {
+		return faction;
+	}
+
+	public void setFaction(String faction) {
+		this.faction = faction;
+	}
+
+	public Vector<Cube> getCubes() {
+		return cubes;
 	}
 	
 	

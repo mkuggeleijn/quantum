@@ -12,17 +12,29 @@ public class Planet extends GamePiece{
 		this.cubes = new Vector<Cube>(maxCubes);	
 	}
 	
-	public boolean addCube(Cube cube){
+	public boolean hasCube(Player player){
+		for (Cube cube : cubes){
+			if (cube.getOwner() == player){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean canAddCube(Player player){
 		if (cubes.size()== cubes.capacity()){
 			return false;
 		}
 		for (Cube c : cubes){
-			if (c.getOwner() == cube.getOwner()){
+			if (c.getOwner() == player){
 				return false;
 			}
 		}
-		cubes.add(cube);
 		return true;
+	}
+	
+	public void addCube(Cube cube){
+		cubes.add(cube);
 	}
 	
 	public boolean removeCube(Cube cube){

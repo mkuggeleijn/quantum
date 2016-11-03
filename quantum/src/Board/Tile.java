@@ -3,6 +3,7 @@ package Board;
 import java.awt.Point;
 
 import quantum.Direction;
+import quantum.GameSettings;
 import quantum.Planet;
 
 public class Tile extends BoardElement{
@@ -11,7 +12,9 @@ public class Tile extends BoardElement{
 	private Square[][] squares;
 	
 	public Tile(int diceTotal, int cubeSpaces){
-		setupTile(3,3,new Planet(diceTotal,cubeSpaces),2,2);
+		setupTile(GameSettings.getTileSize(),GameSettings.getTileSize(),
+				 new Planet(diceTotal,cubeSpaces),
+				 GameSettings.getPlanetCoords().x,GameSettings.getPlanetCoords().y);
 	}
 	
 	public void setupTile(int dx, int dy, Planet planet, int planetX, int planetY){
@@ -40,6 +43,14 @@ public class Tile extends BoardElement{
 	public void addNeighbour(int x, int y, BoardElement e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Planet getPlanet() {
+		return planet;
+	}
+
+	public void setPlanet(Planet planet) {
+		this.planet = planet;
 	}
 
 }

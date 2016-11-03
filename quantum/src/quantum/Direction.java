@@ -3,7 +3,15 @@ package quantum;
 import java.awt.Point;
 
 public enum Direction {
-	N, NE, E, SE, S, SW, W;
+	N, NE, E, SE, S, SW, W, NW;
+	
+	public static Direction[] cardinals(){
+		return new Direction[]{N,E,S,W};
+	}
+	
+	public static Direction[] diagonals(){
+		return new Direction[]{NE, SE, SW, NW};
+	}
 	
 	public Point toOffset(){
 		int x = 0;
@@ -33,6 +41,9 @@ public enum Direction {
 		case W:
 			x = -1;
 			break;
+		case NW:
+			x = -1;
+			y = -1;
 		}
 		return new Point(x,y);
 	}
